@@ -1,28 +1,30 @@
 pipeline {
     agent any
     tools {
-        maven 'Maven 3.8.3'
-        jdk 'jdk8'
+        maven "MAVEN"
+        jdk "JDK"
     }
     stages {
-        stage ('Initialize') {
-            steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${MAVEN_HOME}"
-                '''
+        stage('Initialize'){
+            steps{
+                echo "PATH = ${M2_HOME}/bin:${PATH}"
+                echo "M2_HOME = /opt/maven"
             }
         }
-
-        stage ('Build') {
+        stage('Build') {
             steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true install' 
-            }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
+                dir("/var/lib/jenkins/workspace/demopipelinetask/my-app") {
+                sh 'mvn -B -DskipTests clean package'
                 }
             }
         }
-    }
+     }
+    post {
+       always {
+          junit(
+        allowEmptyResults: true,
+        testResults: '*/test-reports/.xml'
+      )
+      }
+   } 
 }
