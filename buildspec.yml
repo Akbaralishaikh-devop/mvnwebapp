@@ -11,5 +11,9 @@ phases:
     - echo Build started on `date`
   post_build:
     commands:
-    - echo Build complete on `date`    
+    - echo Build complete on `date`
+ artifacts:
+  type: zip
+  paths:
+    - '*'
 
