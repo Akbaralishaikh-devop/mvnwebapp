@@ -8,7 +8,7 @@ phases:
     - echo In the pre_build phase...
   build:
     commands:
-    - echo Build started on `date`
+    - echo Build started on1 `date`
   post_build:
     commands:
     - echo Build complete on1 `date`
