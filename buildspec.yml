@@ -12,7 +12,4 @@ phases:
   post_build:
     commands:
     - echo Build complete on `date`    
-artifacts:
-  type: zip
-  paths:
-    - '*'
+
