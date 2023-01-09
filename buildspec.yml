@@ -17,5 +17,6 @@ phases:
 artifacts:
   files:
     - target/mvnwebapp.war
+  discard-paths: yes
 
 
