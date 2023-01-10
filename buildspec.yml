@@ -16,7 +16,7 @@ phases:
     - mvn package
 artifacts:
   files:
-    - target/mvnwebapp.war
+    - target/mvnwebapp.jar
   discard-paths: yes
 
 
